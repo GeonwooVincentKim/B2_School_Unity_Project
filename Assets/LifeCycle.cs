@@ -6,41 +6,22 @@ public class LifeCycle : MonoBehaviour
 {
     void Start()
     {
-        
         // int number = 4; // This Simple Number Call Scala. Scala Value
     }
 
     void Update()
     {
-        Vector3 vec = new Vector3(5, 5, 5); // Vector Value
+        Vector3 vec = new Vector3(
+            Input.GetAxisRaw("Horizontal"),
+            Input.GetAxisRaw("Vertical"), 
+            0); // Vector Value
 
         // A function that adds a vector value to the current position.
         transform.Translate(vec);
     }
 
     // Example_Class ex_code = new Example_Class();
-    //void Update()
-    //{
-    //    // When User Inputed Any Key first. Show When user started to input Keyboard.
-    //    if (Input.anyKeyDown)
-    //        Debug.Log("Player Inputed Any Key.");
-
-    //    if (Input.GetButton("Horizontal")) {
-    //        // When User Input Horizontal or Vertical Button, it shows float.
-    //        // Object always have Transform Variable.
-    //        Debug.Log("Moving Laterally...."
-    //            // + Input.GetAxis("Horizontal"));
-    //            + Input.GetAxisRaw("Horizontal"));
-
-    //    }
-
-    //    if (Input.GetButton("Vertical")) {
-    //        Debug.Log("Moving Laterally...."
-    //            // + Input.GetAxis("Vertical"));
-    //            + Input.GetAxisRaw("Vertical"));
-    //    }
-    //}
-
+    
     public void InputKey() {
         // It alway shows True when receive any input. Keep Inputing
         if (Input.anyKey)
@@ -86,5 +67,29 @@ public class LifeCycle : MonoBehaviour
         // When User Stopped to Input "Input Button" finally, it stops Input Program.
         if (Input.GetButtonUp("Fire1"))
             Debug.Log("Super Jump!!!");
+    }
+
+    public void InputButtonUpdate()
+    {
+        // When User Inputed Any Key first. Show When user started to input Keyboard.
+        if (Input.anyKeyDown)
+            Debug.Log("Player Inputed Any Key.");
+
+        if (Input.GetButton("Horizontal"))
+        {
+            // When User Input Horizontal or Vertical Button, it shows float.
+            // Object always have Transform Variable.
+            Debug.Log("Moving Laterally...."
+                // + Input.GetAxis("Horizontal"));
+                + Input.GetAxisRaw("Horizontal"));
+
+        }
+
+        if (Input.GetButton("Vertical"))
+        {
+            Debug.Log("Moving Laterally...."
+                // + Input.GetAxis("Vertical"));
+                + Input.GetAxisRaw("Vertical"));
+        }
     }
 }
