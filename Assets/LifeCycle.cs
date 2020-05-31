@@ -4,58 +4,87 @@ using UnityEngine;
 
 public class LifeCycle : MonoBehaviour
 {
-    // When Generate Game Object, Execute this function first.
-    void Awake()
-    {
-        Debug.Log("Ready for Player Data");   
-    }
-
-    // When Game Object are activated.
-    void OnEnable()
-    {
-        // Execute Every time when you turn on or turn off this project.
-        Debug.Log("Player has been Logged in.");
-    }
-
-    // Execute this Function First Before start Update Function.
     void Start()
     {
-        Debug.Log("You've got Hunting Gear.");
+        
+        // int number = 4; // This Simple Number Call Scala. Scala Value
     }
 
-    // Physical Operation Update
-    void FixedUpdate()
-    {
-        // High CPU usage with fixed Frequent Execution.
-        // Call this function 50 times Per Second.
-        // Normally execute CPU as 50 frames, but it is executing 60 frames.
-        Debug.Log("Move~!");
-    }
-
-    // Update Game Logic
     void Update()
     {
-        // Dependng on the environment, The Frequent Execution Cycle can be reduced.
-        Debug.Log("Hunting Monster!!");
+        Vector3 vec = new Vector3(5, 5, 5); // Vector Value
+
+        // A function that adds a vector value to the current position.
+        transform.Translate(vec);
     }
 
-    // After all updates
-    void LateUpdate()
-    {
-        // Upload Camera or Character Postprocessing.
-        // You've got an extra experience point!!
+    // Example_Class ex_code = new Example_Class();
+    //void Update()
+    //{
+    //    // When User Inputed Any Key first. Show When user started to input Keyboard.
+    //    if (Input.anyKeyDown)
+    //        Debug.Log("Player Inputed Any Key.");
 
+    //    if (Input.GetButton("Horizontal")) {
+    //        // When User Input Horizontal or Vertical Button, it shows float.
+    //        // Object always have Transform Variable.
+    //        Debug.Log("Moving Laterally...."
+    //            // + Input.GetAxis("Horizontal"));
+    //            + Input.GetAxisRaw("Horizontal"));
+
+    //    }
+
+    //    if (Input.GetButton("Vertical")) {
+    //        Debug.Log("Moving Laterally...."
+    //            // + Input.GetAxis("Vertical"));
+    //            + Input.GetAxisRaw("Vertical"));
+    //    }
+    //}
+
+    public void InputKey() {
+        // It alway shows True when receive any input. Keep Inputing
+        if (Input.anyKey)
+            Debug.Log("Player Inputing Any Key");
+
+        // When User Started to Input Any Keyboard first.
+        // Return means Enter Key.
+        if (Input.GetKeyDown(KeyCode.Return))
+            Debug.Log("You've bought Item.");
+
+        // It alway shows True when receive any Keyboard Input.
+        if (Input.GetKey(KeyCode.LeftArrow))
+            Debug.Log("Move to Left Side.");
+
+        // When User Stopped to Input Any Keyboard finally.
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+            Debug.Log("It stopped to move to Right Side.");
     }
 
-    // When Game Object are disabled.
-    void OnDisable()
-    {
-        // Execute Every time you've delete some object or all of objects.
+    public void InputMouseEvent() {
+        // When User Started to Input Mouse Input Event first.
+        if (Input.GetMouseButtonDown(0))
+            Debug.Log("Launch Missile!");
+
+        // It alway shows True when receive any Mouse Input Event.
+        if (Input.GetMouseButton(0))
+            Debug.Log("Collecting Missiles..");
+
+        // When User Stopped to Input Mouse Event finally.
+        if (Input.GetMouseButtonUp(0))
+            Debug.Log("Launch Super Missiles!!");
     }
 
-    void OnDestroy()
-    {
-        // Delete All Game Objects
-        Debug.Log("Released All Player Data");
+    public void InputButton() {
+        // When User Started to Input "Input Button" first, it shows true.
+        if (Input.GetButtonDown("SuperFire"))
+            Debug.Log("Lethal Moves!");
+
+        // Keep Executing when user Keep Inputing.
+        if (Input.GetButton("Fire1"))
+            Debug.Log("Collecting Jump...");
+
+        // When User Stopped to Input "Input Button" finally, it stops Input Program.
+        if (Input.GetButtonUp("Fire1"))
+            Debug.Log("Super Jump!!!");
     }
 }
