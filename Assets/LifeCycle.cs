@@ -4,24 +4,54 @@ using UnityEngine;
 
 public class LifeCycle : MonoBehaviour
 {
-    void Start()
-    {
-        // int number = 4; // This Simple Number Call Scala. Scala Value
-    }
-
+    Vector3 target = new Vector3(8, 1.5f, 0);
     void Update()
     {
-        Vector3 vec = new Vector3(
-            Input.GetAxisRaw("Horizontal"),
-            Input.GetAxisRaw("Vertical"), 
-            0); // Vector Value
+        //Vector3 vec = new Vector3(
+        //    Input.GetAxisRaw("Horizontal"),
+        //    Input.GetAxisRaw("Vertical"), 
+        //    0); // Vector Value
 
+        // int number = 4; // This Simple Number Call Scala. Scala Value
         // A function that adds a vector value to the current position.
-        transform.Translate(vec);
+        // transform.Translate(vec);
+        // 1. MoveToWards -> Constant Velocity
+        //             -> Parameter(Current Position, Target Position, Speed)
+        transform.position =
+            Vector3.MoveTowards(
+                transform.position,
+                target,
+                1f);
+
+        // 2. SmoothDamp -> Constant Velocity
+        //             -> Parameter(Current Position, Target Position, Reference Speed, Speed)
+        Vector3 velo = Vector3.zero;
+        // Vector3 velo = Vector3.up * 50;
+
+        transform.position =
+            Vector3.SmoothDamp(
+                transform.position,
+                target, ref velo, 0.1f
+            );
+
+        // 3.Lefp --> Linear Interpolation
+        //      --> It takes longer to decelerate than SmoothDamp.
+        transform.position =
+            Vector3.Lerp(
+                transform.position,
+                target, 0.005f);
+
+        // 4.  Slerp --> Spherical Linear Interpolation
+        //          --> It takes longer to decelerate than SmoothDamp.
+        //          --> And It moves like a Parabolic Movement.
+        transform.position =
+                Vector3.Slerp(
+                    transform.position,
+                    target, 0.005f);
     }
 
     // Example_Class ex_code = new Example_Class();
-    
+
     public void InputKey() {
         // It alway shows True when receive any input. Keep Inputing
         if (Input.anyKey)
