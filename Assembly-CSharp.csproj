@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Example_Class.cs" />
     <Compile Include="Assets\LifeCycle.cs" />
+    <Compile Include="Assets\LifeCycle_2.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
